@@ -496,15 +496,15 @@ module.exports = function (grunt) {
     'concurrent:dist',
     'postcss',
     // 'ngtemplates',
-    'concat',
-    'ngAnnotate',
+    // 'concat',
+    // 'ngAnnotate',
     'copy:dist',
-    'cdnify',
-    'cssmin',
-    'uglify',
-    'filerev',
-    'usemin',
-    'htmlmin'
+    // 'cdnify',
+    // 'cssmin',
+    // 'uglify',
+    // 'filerev',
+    // 'usemin',
+    // 'htmlmin'
   ]);
 
   grunt.registerTask('default', [
