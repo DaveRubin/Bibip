@@ -1,0 +1,162 @@
+$icon-font-path: "../bower_components/bootstrap-sass-official/assets/fonts/bootstrap/";
+// bower:scss
+@import "bootstrap-sass-official/assets/stylesheets/_bootstrap.scss";
+// endbower
+@import url(http://fonts.googleapis.com/earlyaccess/opensanshebrew.css);
+
+$distance: 200px;
+$scale: 0.8;
+$hornScale: 0.6;
+$bibs-width: 836px*$scale;
+$bibs-height: 682px*$scale;
+$hornHeight: 454px*$hornScale;
+$hornWidth: 340px*$hornScale;
+
+.mainText {
+  margin: 0 50px;
+  margin-top: 30px;
+  position: absolute;
+  width: calc(100% - 100px);
+  height: 115px;
+  background: url('/images/mainText.png');
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center;
+}
+
+.info {
+  height: 200px;
+  bottom: 0;
+  position: absolute;
+  width: 100%;
+
+  .social {
+    bottom: 40px;
+    left: 40px;
+    position: absolute;
+    a{
+      opacity: 0.5;
+      &:hover {
+        opacity: 1;
+      }
+    }
+  }
+
+  .counter {
+    text-align: right;
+    font-family: 'Open Sans Hebrew', serif;
+    font-weight: 900;
+    color: white;
+    bottom: 20px;
+    right: 40px;
+    position: absolute;
+    .numbers {
+      font-size: 50px;
+    }
+    .bibips {
+      font-size: 30px;
+      color: #2d2f32;
+    }
+    .brought-by,a {
+      font-size: 12px;
+      color: #b8b8b8;
+    }
+    a {
+      text-decoration: underline;
+    }
+    p {
+      margin: 0
+    }
+  }
+}
+
+.hitZone {
+  width: 100%;
+  height: 100%;
+  background: black;
+  background: url('/images/background.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: right;
+}
+
+.fullScreen {
+
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+.rotatinObject {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+
+  .innerObject {
+    height: $hornHeight;
+    width: $hornWidth;
+    background: white;
+    position: relative;
+    top: $distance;
+    left: -$hornWidth/2;
+    //454 × 340
+    background: url('/images/horn.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+}
+
+.bibs-base {
+  left: 50%;
+  top: 100%;
+  position: absolute;
+  height: 0;
+  width: 0;
+
+  .bibs-body {
+    background: url('/images/bibi.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    width: $bibs-width;
+    height: $bibs-height;
+    position: absolute;
+    top: -$bibs-height;
+    left: -$bibs-width/2;
+
+    .hair {
+      width: 50px;
+      height: 50px;
+    }
+  }
+  .bibs-eyes {
+    top: -$bibs-height + 140px;
+    left: -65px;
+    position: absolute;
+
+    .bibs-eye {
+      background: deepskyblue;
+      width: 20px;
+      height: 20px;
+      position: absolute;
+
+      &.left {
+        left: 4px;
+        top: 40px;
+      }
+      &.right {
+        left: 108px;
+        top: 40px;
+      }
+      .eye-image {
+        background: url('/images/eye.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        width: 40px;
+        height: 40px;
+        position: relative;
+      }
+    }
+  }
+}

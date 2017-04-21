@@ -1,0 +1,46 @@
+<div class="hitZone"
+     ng-mousedown="OnMouseClick(true)"
+     ng-mouseup="OnMouseClick(false)"
+     ng-mousemove="OnMouseMove($event)">
+
+  <div class="mainText"></div>
+  <div class="bibs-base">
+    <div class="bibs-eyes">
+      <div class="bibs-eye left">
+        <div class="eye-image" style="top:{{eye.y}}px;left:{{eye.x}}px"></div>
+      </div>
+      <div class="bibs-eye right">
+        <div class="eye-image" style="top:{{eye.y}}px;left:{{eye.x}}px"></div>
+      </div>
+    </div>
+    <div class="bibs-body">
+      <div class="hair"
+           style="background: url({{hairImage}});
+                  background-repeat: no-repeat;
+                  background-position:center"></div>
+    </div>
+  </div>
+
+  <div class="rotatinObject"
+       style="-webkit-transform: rotate({{degree}}deg);
+              transform: rotate({{degree}}deg);
+              -ms-transform: rotate({{degree}}deg);">
+    <div class="innerObject">
+
+    </div>
+  </div>
+  <div class="info">
+    <div class="social">
+      <a href=""><img src="/images/social_fb.png" ></a>
+      <a href=""><img src="/images/social_insta.png" ></a>
+      <a href=""><img src="/images/social_twitter.png" ></a>
+      <a href=""><img src="/images/social_whatsapp.png" ></a>
+    </div>
+    <div class="counter">
+      <p class="numbers">{{bibips| number}}</p>
+      <p class="bibips">BIBIPS</p>
+      <p class="brought-by">BROUGHT TO YOU BY <a href="www.google.com">NG-PR</a></p>
+    </div>
+  </div>
+  {{test}}
+</div>
