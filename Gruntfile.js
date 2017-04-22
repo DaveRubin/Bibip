@@ -89,6 +89,7 @@ module.exports = function (grunt) {
                 '/app/styles',
                 connect.static('./app/styles')
               ),
+              // connect.static(appConfig.dist)
               connect.static(appConfig.app)
             ];
           }
@@ -495,16 +496,16 @@ module.exports = function (grunt) {
     'useminPrepare',
     'concurrent:dist',
     'postcss',
-    // 'ngtemplates',
-    // 'concat',
-    // 'ngAnnotate',
+    'ngtemplates',
+    'concat',
+    'ngAnnotate',
     'copy:dist',
-    // 'cdnify',
-    // 'cssmin',
-    // 'uglify',
+    'cdnify',
+    'cssmin',
+    'uglify',
     // 'filerev',
-    // 'usemin',
-    // 'htmlmin'
+    'usemin',
+    'htmlmin'
   ]);
 
   grunt.registerTask('default', [
