@@ -144,37 +144,50 @@ $hornWidth: 340px*$hornScale;
         width: 230px;
       }
       .animating {
-
+        user-drag: none;
+        user-select: none;
+        -moz-user-select: none;
+        -webkit-user-drag: none;
+        -webkit-user-select: none;
+        -ms-user-select: none;
         position: relative;
         &.down {
-          width: 230px;
-          top: -10px;
+          top: -200px;
+          left: -90px;
+          width: 460px;
         }
         &.down_left {
-          top: -110px;
-          width: 330px;
+          top: -190px;
+          left: -100px;
+          width: 460px;
         }
         &.down_right {
-          top: -130px;
-          left: -110px;
+          top: -190px;
+          left: -80px;
+          width: 460px;
         }
         &.left {
-          top: -10px;
+          top: -220px;
+          left: -150px;
         }
         &.right {
-          top: -10px;
-          left: -140px;
+          top: -216px;
+          left: -120px;
         }
         &.top {
-          top: -160px;
-          width: 260px;
+          top: -190px;
+          left: -110px;
+          width: 480px;
         }
         &.top_right {
-          top: -10px;
-          left: -140px;
+          top: -190px;
+          left: -110px;
+          width: 480px;
         }
         &.top_left {
-          top: -26px;
+          top: -177px;
+          left: -110px;
+          width: 480px;
         }
 
       }

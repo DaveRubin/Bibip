@@ -17,8 +17,9 @@ angular.module('bibiApp')
     $scope.pressed = false;
     $scope.animating= false;
     $scope.hairImage = 1;
-    $scope.direction = 'down';
+    $scope.direction = 'top';
 
+    var promise;
     var sounds = [];
     var lastPlayedIndex  = 0;
     var eyesDistance = 5;
@@ -63,24 +64,28 @@ angular.module('bibiApp')
       var base = -22.5;
       degree = $scope.degree +180;
       if (degree > base + 360 || degree< base+ 45)        {$scope.direction = "down";}
-      else if (degree > base+45  && degree < base+ 90 )   {$scope.direction = "top_right";}
-      else if (degree > base+90  && degree < base+ 135 )  {$scope.direction = "right";}
-      else if (degree > base+135 && degree < base+ 180 )  {$scope.direction = "down_right";}
+      else if (degree > base+45  && degree < base+ 90 )   {$scope.direction = "down_left";}
+      else if (degree > base+90  && degree < base+ 135 )  {$scope.direction = "left";}
+      else if (degree > base+135 && degree < base+ 180 )  {$scope.direction = "top_left";}
       else if (degree > base+180 && degree < base+ 225 )  {$scope.direction = "top";}
-      else if (degree > base+225 && degree < base+ 270 )  {$scope.direction = "down_left";}
-      else if (degree > base+270 && degree < base+ 315 )  {$scope.direction = "left";}
-      else if (degree > base+315 && degree < 360 )       {$scope.direction = "top_left";}
+      else if (degree > base+225 && degree < base+ 270 )  {$scope.direction = "top_right";}
+      else if (degree > base+270 && degree < base+ 315 )  {$scope.direction = "right";}
+      else if (degree > base+315 && degree < 360 )       {$scope.direction = "down_right";}
 
-      console.log(degree + " , " + $scope.direction );
+      //console.log(degree + " , " + $scope.direction );
     };
 
     function playHair() {
       $scope.hairImage = 1;
-      var times = 10;
+      var times = 4;
       var j = 1;
       $scope.animating = true;
-      playing++;
-      $interval(function () {
+
+      if (promise!=null) {
+        $interval.cancel(promise);
+      }
+
+      promise = $interval(function () {
         if (j!= times) {
           j++;
           if (j>2) {
@@ -91,12 +96,9 @@ angular.module('bibiApp')
           }
         }
         else {
-          playing--;
-          if (playing == 0) {
-            $scope.animating = false;
-          }
+          $scope.animating = false;
         }
-        console.log(" my j :"+$scope.hairImage);
+        //console.log(" my j :"+$scope.hairImage);
       }, 100, times)
     }
 
