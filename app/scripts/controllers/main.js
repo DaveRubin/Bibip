@@ -7,6 +7,7 @@
  * # MainCtrl
  * Controller of the bibiApp
  */
+var x ;
 angular.module('bibiApp')
   .controller('MainCtrl', function ($scope,$window,$interval) {
 
@@ -37,7 +38,6 @@ angular.module('bibiApp')
       var isMobile = $window.innerWidth < $window.innerHeight;
       if (isMobile != $scope.mobile) {
         $scope.mobile = isMobile;
-        console.log(isMobile);
       }
     }
 
@@ -51,6 +51,12 @@ angular.module('bibiApp')
 
     angular.element($window).bind('resize', function () {
       updateCenter();
+    });
+
+    $('html').bind('touchmove', function(e) {
+      if ($scope.mobile) {
+        $scope.OnMouseMove(e.originalEvent.touches[0]);
+      }
     });
 
     $scope.OnMouseMove = function($event) {
@@ -71,7 +77,9 @@ angular.module('bibiApp')
       else if (degree > base+225 && degree < base+ 270 )  {$scope.direction = "top_right";}
       else if (degree > base+270 && degree < base+ 315 )  {$scope.direction = "right";}
       else if (degree > base+315 && degree < 360 )       {$scope.direction = "down_right";}
-
+      if($scope.mobile && !$scope.$$phase) {
+        $scope.$digest();
+      }
       //console.log(degree + " , " + $scope.direction );
     };
 
