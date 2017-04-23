@@ -10,15 +10,15 @@
 var x ;
 angular.module('bibiApp')
   .controller('MainCtrl', function ($scope,$window,$interval) {
-
+    $scope.color = 'color1';
     $scope.mobile = false;
     $scope.bibips = 1234567;
     $scope.degree = 0;
     $scope.eye = {x:0,y:0};
     $scope.pressed = false;
-    $scope.animating= false;
+    $scope.animating = false;
     $scope.hairImage = 1;
-    $scope.direction = 'top';
+    $scope.direction = 'right';
 
     var promise;
     var sounds = [];
@@ -71,11 +71,11 @@ angular.module('bibiApp')
       degree = $scope.degree +180;
       if (degree > base + 360 || degree< base+ 45)        {$scope.direction = "down";}
       else if (degree > base+45  && degree < base+ 90 )   {$scope.direction = "down_left";}
-      else if (degree > base+90  && degree < base+ 135 )  {$scope.direction = "left";}
+      else if (degree > base+90  && degree < base+ 135 )  {$scope.direction = "right";}
       else if (degree > base+135 && degree < base+ 180 )  {$scope.direction = "top_left";}
       else if (degree > base+180 && degree < base+ 225 )  {$scope.direction = "top";}
       else if (degree > base+225 && degree < base+ 270 )  {$scope.direction = "top_right";}
-      else if (degree > base+270 && degree < base+ 315 )  {$scope.direction = "right";}
+      else if (degree > base+270 && degree < base+ 315 )  {$scope.direction = "left";}
       else if (degree > base+315 && degree < 360 )       {$scope.direction = "down_right";}
       if($scope.mobile && !$scope.$$phase) {
         $scope.$digest();
@@ -87,7 +87,10 @@ angular.module('bibiApp')
       $scope.hairImage = 1;
       var times = 4;
       var j = 1;
+      //select new hair color
+      var index = Math.floor(Math.random()*7)+1;
       $scope.animating = true;
+      $scope.color = 'color'+index;
 
       if (promise!=null) {
         $interval.cancel(promise);
@@ -105,6 +108,7 @@ angular.module('bibiApp')
         }
         else {
           $scope.animating = false;
+          $scope.color = '';
         }
         //console.log(" my j :"+$scope.hairImage);
       }, 100, times)

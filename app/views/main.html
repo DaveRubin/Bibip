@@ -15,18 +15,19 @@
       </div>
     </div>
     <div class="bibs-body" ng-class="pressed? 'closed':''">
-      <div class="hair">
+      <div class="hair" >
         <img class="idle" ng-show="!animating" src="/images/bibi/bibi master hair.png">
-        <img class="animating down"       ng-show="animating && direction == 'down' " src="/images/down/{{hairImage}}.png">
-        <img class="animating down_left"  ng-show="animating && direction == 'down_left' " src="/images/down_left/{{hairImage}}.png">
-        <img class="animating down_right" ng-show="animating && direction == 'down_right' " src="/images/down_right/{{hairImage}}.png">
-        <img class="animating left"       ng-show="animating && direction == 'left' " src="/images/left/{{hairImage}}.png">
-        <img class="animating right"      ng-show="animating && direction == 'right' " src="/images/right/{{hairImage}}.png">
-        <img class="animating top"        ng-show="animating && direction == 'top' " src="/images/top/{{hairImage}}.png">
-        <img class="animating top_right"  ng-show="animating && direction == 'top_right' " src="/images/top_right/{{hairImage}}.png">
-        <img class="animating top_left"   ng-show="animating && direction == 'top_left' " src="/images/top_left/{{hairImage}}.png">
+        <img ng-class="color" class="animating sides"       ng-show="animating" src="/images/bibi/hair top layrs.png">
+        <img ng-class="color" class="animating down"       ng-show="animating && direction == 'down' " src="/images/down/{{hairImage}}.png">
+        <img ng-class="color" class="animating down_left"  ng-show="animating && direction == 'down_left' " src="/images/down_left/{{hairImage}}.png">
+        <img ng-class="color" class="animating down_right" ng-show="animating && direction == 'down_right' " src="/images/down_right/{{hairImage}}.png">
+        <img ng-class="color" class="animating left"       ng-show="animating && direction == 'left' " src="/images/left/{{hairImage}}.png">
+        <img ng-class="color" class="animating right"      ng-show="animating && direction == 'right' " src="/images/right/{{hairImage}}.png">
+        <img ng-class="color" class="animating top"        ng-show="animating && direction == 'top' " src="/images/top/{{hairImage}}.png">
+        <img ng-class="color" class="animating top_right"  ng-show="animating && direction == 'top_right' " src="/images/top_right/{{hairImage}}.png">
+        <img ng-class="color" class="animating top_left"   ng-show="animating && direction == 'top_left' " src="/images/top_left/{{hairImage}}.png">
       </div>
-      
+
     </div>
   </div>
 

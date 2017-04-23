@@ -10,7 +10,6 @@
  */
 angular
   .module('bibiApp', [
-    'ngAnimate',
     'ngCookies',
     'ngResource',
     'ngRoute',

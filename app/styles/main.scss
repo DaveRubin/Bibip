@@ -8,7 +8,7 @@ $base-width:834px;
 $base-height:687px;
 $distance: 200px;
 $distance-m: 100px;
-$scale: 0.8;
+$scale: 1;
 $scale-mobile: 0.4;
 $hornScale: 0.6;
 
@@ -150,7 +150,7 @@ $hornWidth: 340px*$hornScale;
 
   .bibs-body {
 
-
+    zoom:0.8;
     background-repeat: no-repeat;
     background-size: cover;
     width: $bibs-width;
@@ -178,7 +178,8 @@ $hornWidth: 340px*$hornScale;
     .hair {
 
       .idle {
-        width: 230px;
+        position: relative;
+        left:60px
       }
       .animating {
         user-drag: none;
@@ -187,44 +188,74 @@ $hornWidth: 340px*$hornScale;
         -webkit-user-drag: none;
         -webkit-user-select: none;
         -ms-user-select: none;
-        position: relative;
+        position: absolute;
+
+        filter:hue-rotate(0deg) brightness(100%) saturate(0);
+        transition: 0.2s ;
+        //brown
+        &.color1 {
+          filter:hue-rotate(-160deg) brightness(55%) saturate(1.34);
+        }
+        //blue
+        &.color2 {
+          filter:hue-rotate(6deg) brightness(117%) saturate(0.8);
+        }
+        //red
+        &.color3 {
+          filter:hue-rotate(-558deg) brightness(100%) saturate(2);
+        }
+        //golden
+        &.color4{
+          filter:hue-rotate(210deg) brightness(100%) saturate(0.8);
+        }
+        //orange xtreme
+        &.color5 {
+          filter: hue-rotate(200deg) brightness(100%) saturate(1.6);
+        }
+        //purple
+        &.color6 {
+          filter: hue-rotate(-630deg) brightness(100%) saturate(0.3);
+        }
+        //green
+        &.color7 {
+          filter: hue-rotate(-420deg) brightness(100%) saturate(0.5);
+        }
+
+        &.sides {
+          left: -60px;
+          top: -93px;
+        }
         &.down {
-          top: -200px;
-          left: -90px;
-          width: 460px;
+          top: -220px;
+          left: -80px;
         }
         &.down_left {
-          top: -190px;
-          left: -100px;
-          width: 460px;
+          top: -230px;
+          left: -88px;
         }
         &.down_right {
-          top: -190px;
+          top: -210px;
           left: -80px;
-          width: 460px;
         }
         &.left {
-          top: -220px;
-          left: -150px;
+          top: -200px;
+          left: -92px;
         }
         &.right {
-          top: -216px;
-          left: -120px;
+          top: -226px;
+          left: -90px;
         }
         &.top {
-          top: -190px;
-          left: -110px;
-          width: 480px;
+          top: -210px;
+          left: -80px;
         }
         &.top_right {
-          top: -190px;
-          left: -110px;
-          width: 480px;
+          top: -210px;
+          left: -90px;
         }
         &.top_left {
-          top: -177px;
-          left: -110px;
-          width: 480px;
+          top: -207px;
+          left: -90px;
         }
 
       }
@@ -236,7 +267,7 @@ $hornWidth: 340px*$hornScale;
     }
   }
   .bibs-eyes {
-    top: -$bibs-height + 140px;
+    top: -$bibs-height + 280px;
     left: -65px;
     position: absolute;
 
@@ -266,4 +297,35 @@ $hornWidth: 340px*$hornScale;
   }
 }
 
+@mixin keyframes($animationName) {
+  @-webkit-keyframes #{$animationName} {
+    @content;
+  }
+  @-moz-keyframes #{$animationName} {
+    @content;
+  }
+  @-o-keyframes #{$animationName} {
+    @content;
+  }
+  @keyframes #{$animationName} {
+    @content;
+  }
+}
+
+@mixin animation($animate...) {
+  $max: length($animate);
+  $animations: '';
+
+  @for $i from 1 through $max {
+    $animations: #{$animations + nth($animate, $i)};
+
+    @if $i < $max {
+      $animations: #{$animations + ", "};
+    }
+  }
+  -webkit-animation: $animations;
+  -moz-animation:    $animations;
+  -o-animation:      $animations;
+  animation:         $animations;
+}
 
