@@ -10,14 +10,17 @@ $distance: 200px;
 $distance-m: 100px;
 $scale: 1;
 $scale-mobile: 0.4;
-$hornScale: 0.6;
+$hornScale: 0.4;
 
 $bibs-width: $base-width*$scale;
 $bibs-height: $base-height*$scale;
 $bibs-width-m: $base-width*$scale-mobile;
 $bibs-height-m: $base-height*$scale-mobile;
-$hornHeight: 454px*$hornScale;
-$hornWidth: 340px*$hornScale;
+//263 × 582
+//215 × 582
+$hornHeight: 582px*$hornScale;
+$hornWidth: 263px*$hornScale;
+$hornPressedWidth: 215px*$hornScale;
 
 
 .mainText {
@@ -123,13 +126,20 @@ $hornWidth: 340px*$hornScale;
     position: relative;
     top: $distance;
     left: -$hornWidth/2;
-    .mobile & {
-      //top: $distance-m;
-    }
     //454 × 340
     background: url('/images/horn.png');
     background-repeat: no-repeat;
     background-size: cover;
+    &.pressed {
+      background: url('/images/horn_pressed.png');
+      width: $hornPressedWidth;
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+
+    .mobile & {
+      //top: $distance-m;;
+    }
   }
 }
 
