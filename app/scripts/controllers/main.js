@@ -7,18 +7,51 @@
  * # MainCtrl
  * Controller of the bibiApp
  */
-var x ;
+
+
 angular.module('bibiApp')
-  .controller('MainCtrl', function ($scope,$window,$interval) {
+  .controller('MainCtrl', function ($scope,$window,$interval,$http) {
+
+    var api = "http://bibipnetanyahu.org/server/api.php?endpoint=counter";
+    var bufferBeeps = 0;
+    $scope.loaded = false;
     $scope.color = 'color1';
     $scope.mobile = false;
-    $scope.bibips = 1234567;
+    $scope.bibips = 0;
     $scope.degree = 0;
     $scope.eye = {x:0,y:0};
     $scope.pressed = false;
     $scope.animating = false;
     $scope.hairImage = 1;
     $scope.direction = 'right';
+
+    function LoadBeeps() {
+      $http.get(api).then(function (response) {
+        //console.log(response.data.counter);
+        //only update if it increments
+        if ($scope.bibips < response.data.counter) {
+          $scope.bibips = response.data.counter;
+        }
+        if (!$scope.loaded ) {
+          $interval(function(){$scope.loaded = true;
+          },1500,1);
+        }
+      });
+    }
+
+    $interval(function () {
+        if (bufferBeeps>0) {
+          //console.log("sending beeps" + bufferBeeps);
+          bufferBeeps = 0;
+          var Indata = {'i': bufferBeeps};
+          $.post(api, Indata)
+            .done(function( data ) {
+              //console.log( data );
+            });
+        }
+    }, 1500);
+
+    $interval(LoadBeeps,3000);
 
     var promise;
     var sounds = [];
@@ -55,6 +88,12 @@ angular.module('bibiApp')
 
     $('html').bind('touchmove', function(e) {
       if ($scope.mobile) {
+        if (!$scope.pressed) {
+          $scope.OnMouseClick(true);
+          $interval(function(){
+            $scope.OnMouseClick(false);
+          },700,1);
+        }
         $scope.OnMouseMove(e.originalEvent.touches[0]);
       }
     });
@@ -110,7 +149,6 @@ angular.module('bibiApp')
           $scope.animating = false;
           $scope.color = '';
         }
-        //console.log(" my j :"+$scope.hairImage);
       }, 100, times)
     }
 
@@ -121,12 +159,13 @@ angular.module('bibiApp')
         sounds[lastPlayedIndex].load();
         lastPlayedIndex = Math.floor(Math.random()*sounds.length);
         sounds[lastPlayedIndex].play();
+        bufferBeeps++;
         playHair();
       }
     };
 
     updateCenter();
-
     loadSounds();
+    LoadBeeps();
 
   });

@@ -1,4 +1,4 @@
-<div class="hitZone"
+<div ng-show="loaded" class="hitZone"
      ng-class="mobile? 'mobile':'' "
      ng-mousedown="OnMouseClick(true)"
      ng-mouseup="OnMouseClick(false)"
@@ -37,18 +37,30 @@
               -ms-transform: rotate({{degree}}deg);">
     <div class="innerObject " ng-class="pressed?'pressed': ''"></div>
   </div>
+
+
+
+
+
   <div class="info">
     <div class="social">
-      <a href=""><img src="/images/social_fb.png" ></a>
-      <a href=""><img src="/images/social_insta.png" ></a>
-      <a href=""><img src="/images/social_twitter.png" ></a>
-      <a href=""><img src="/images/social_whatsapp.png" ></a>
+      <a onclick='ga("send", "event","Share", "Facebook");'
+         href="https://www.facebook.com/sharer/sharer.php?u=http%3A//bibipnetanyahu.org"><img src="/images/social_fb.png" ></a>
+      <a onclick='ga("send", "event","Share", "Whatsapp");'
+         href="/images/instagram_share.jpg"><img src="/images/social_insta.png" ></a>
+      <a onclick='ga("send", "event","Share", "Twitter");'
+         href="https://twitter.com/home?status=http%3A//bibipnetanyahu.org"><img src="/images/social_twitter.png" ></a>
+      <a onclick='ga("send", "event","Share", "Instergram");'
+         href="whatsapp://send?text=http://bibipnetanyahu.org"><img src="/images/social_whatsapp.png" ></a>
     </div>
     <div class="counter">
       <p class="numbers">{{bibips| number}}</p>
       <p class="bibips">BIBIPS</p>
-      <p class="brought-by">BROUGHT TO YOU BY <a href="http://www.ng-pr.co.il" target="_blank">NG-PR</a></p>
+      <p class="brought-by">BROUGHT TO YOU BY <a onclick='ga("send", "event","Click", "Ng-pr");'
+                                                 href="http://www.ng-pr.co.il" target="_blank">NG-PR</a></p>
     </div>
   </div>
-  {{test}}
+</div>
+<div ng-hide="loaded" class="hitZone loading">
+  <p class="loading-text">בטעינה</p>
 </div>
