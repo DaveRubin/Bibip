@@ -85,7 +85,7 @@ angular.module('bibiApp')
 
     function playHair() {
       $scope.hairImage = 1;
-      var times = 4;
+      var times = 8;
       var j = 1;
       //select new hair color
       var index = Math.floor(Math.random()*7)+1;
