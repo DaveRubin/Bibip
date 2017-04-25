@@ -52,6 +52,12 @@ $hornPressedWidth: 215px*$hornScale;
   background-repeat: no-repeat;
   background-size: contain;
   background-position: center;
+
+  .mobile & {
+    width: calc(100% - 20px);
+    height: 115px;
+    margin: 30px 10px 0;
+  }
 }
 
 .info {
