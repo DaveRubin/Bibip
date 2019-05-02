@@ -179,13 +179,16 @@ $hornPressedWidth: 215px*$hornScale;
   -moz-user-select: none;
   -o-user-select: none;
   user-select: none;
+
   .mobile & {
     zoom: 0.8;
+    -moz-transform: scale(0.8);
   }
 
   .bibs-body {
 
     zoom:0.8;
+    -moz-transform: scale(0.8);
     background-repeat: no-repeat;
     background-size: cover;
     width: $bibs-width;
@@ -226,34 +229,43 @@ $hornPressedWidth: 215px*$hornScale;
         position: absolute;
 
         filter:hue-rotate(0deg) brightness(100%) saturate(0);
+        -webkit-filter:hue-rotate(0deg) brightness(100%) saturate(0);
         transition: 0.2s ;
+
         //brown
         &.color1 {
           filter:hue-rotate(-160deg) brightness(55%) saturate(1.34);
+          -webkit-filter:hue-rotate(-160deg) brightness(55%) saturate(1.34);
         }
         //blue
         &.color2 {
           filter:hue-rotate(6deg) brightness(117%) saturate(0.8);
+          -webkit-filter:hue-rotate(6deg) brightness(117%) saturate(0.8);
         }
         //red
         &.color3 {
           filter:hue-rotate(-558deg) brightness(100%) saturate(2);
+          -webkit-filter:hue-rotate(-558deg) brightness(100%) saturate(2);
         }
         //golden
         &.color4{
           filter:hue-rotate(210deg) brightness(100%) saturate(0.8);
+          -webkit-filter:hue-rotate(210deg) brightness(100%) saturate(0.8);
         }
         //orange xtreme
         &.color5 {
           filter: hue-rotate(200deg) brightness(100%) saturate(1.6);
+          -webkit-filter: hue-rotate(200deg) brightness(100%) saturate(1.6);
         }
         //purple
         &.color6 {
           filter: hue-rotate(-630deg) brightness(100%) saturate(0.3);
+          -webkit-filter: hue-rotate(-630deg) brightness(100%) saturate(0.3);
         }
         //green
         &.color7 {
           filter: hue-rotate(-420deg) brightness(100%) saturate(0.5);
+          -webkit-filter: hue-rotate(-420deg) brightness(100%) saturate(0.5);
         }
 
         &.sides {

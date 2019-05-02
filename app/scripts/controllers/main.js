@@ -52,7 +52,7 @@ angular.module('bibiApp')
     }, 1500);
 
     $interval(LoadBeeps,3000);
-
+    var hairIndex = 0;
     var promise;
     var sounds = [];
     var lastPlayedIndex  = 0;
@@ -127,9 +127,11 @@ angular.module('bibiApp')
       var times = 8;
       var j = 1;
       //select new hair color
-      var index = Math.floor(Math.random()*7)+1;
+      var increment = Math.floor(Math.random()*2)+1;
+      hairIndex = ((hairIndex+increment)%7)+1;
+      // console.log(hairIndex +" " + increment);
       $scope.animating = true;
-      $scope.color = 'color'+index;
+      $scope.color = 'color'+hairIndex;
 
       if (promise!=null) {
         $interval.cancel(promise);
